@@ -14,8 +14,8 @@ def create_driver(headless=False):
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
 
-    # intenta usar chromedriver del PATH
+    # intentamos usar chromedriver del PATH
     service = ChromeService()
     driver = webdriver.Chrome(service=service, options=chrome_options)
-    driver.implicitly_wait(5)  # espera implícita razonable
+    driver.implicitly_wait(10)  # espera implícita razonable
     return driver

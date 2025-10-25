@@ -62,10 +62,12 @@ def screenshot_on_failure(request, driver):
             request.node.screenshots.append(path)
 
 # Hook to add test report attributes so fixtures can inspect pass/fail
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
     rep = outcome.get_result()
     setattr(item, "rep_" + rep.when, rep)
+    return rep
 
 # Optional: provide a small helper fixture to access last screenshots in a test
 @pytest.fixture
