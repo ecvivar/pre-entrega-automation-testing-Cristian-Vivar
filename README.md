@@ -39,3 +39,27 @@ Automatizar flujos básicos del sitio https://www.saucedemo.com usando Selenium 
 2. Instalar paquetes
    ```bash
    pip install -r requirements.txt
+  
+## Ejecución de tests
+
+- Ejecutar todos los tests:
+  `pytest`
+
+- Ejecutar todos los tests con reporte HTML:
+  `pytest -v --html=reports/reporte.html --self-contained-html`
+
+- Ejecutar en modo headless:
+  `pytest --headless -v --html=reports/reporte.html`
+
+- Ejecutar un archivo concreto:
+  `pytest -v tests/test_login.py`
+
+- Ejecutar un único test:
+  `pytest -q tests/test_cart.py::test_add_first_product_to_cart -s`
+
+- Mantener navegador abierto (debug):
+  Windows PowerShell: `$env:HOLD_BROWSER="1"; pytest -k test_cart -q`  
+  macOS/Linux: `HOLD_BROWSER=1 pytest -k test_cart -q`
+
+- Ver reportes y capturas:
+  `reports/reporte.html` y `reports/screenshots/`
